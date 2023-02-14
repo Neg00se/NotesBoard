@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApi", "NotesApi\NotesApi.csproj", "{E3CC3542-0306-436D-9A1B-2445F632353B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotesApiClassLibrary", "NotesApiClassLibrary\NotesApiClassLibrary.csproj", "{B90217CD-76B1-439E-BD2D-E50FABD622DE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E3CC3542-0306-436D-9A1B-2445F632353B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3CC3542-0306-436D-9A1B-2445F632353B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3CC3542-0306-436D-9A1B-2445F632353B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3CC3542-0306-436D-9A1B-2445F632353B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B90217CD-76B1-439E-BD2D-E50FABD622DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B90217CD-76B1-439E-BD2D-E50FABD622DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B90217CD-76B1-439E-BD2D-E50FABD622DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B90217CD-76B1-439E-BD2D-E50FABD622DE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEDBF4A1-7E41-46A9-AFB6-5E6D0FE013EE}
+	EndGlobalSection
+EndGlobal
