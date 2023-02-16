@@ -7,14 +7,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NotesApiClassLibrary.Data;
-public class ApplicationDbContext : DbContext
+public class NotesDbContext : DbContext
 {
 
-	public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):
+	public NotesDbContext(DbContextOptions<NotesDbContext> options):
 		base(options)
 	{
 
 	}
 
-	public DbSet<NoteModel> Notes { get; set; }
+	public DbSet<Note> Notes { get; set; }
+
+	public DbSet<User> Users { get;set; }
 }
