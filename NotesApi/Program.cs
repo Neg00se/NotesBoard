@@ -27,6 +27,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddDbContext<NotesDbContext>(options => options.UseSqlServer(
 builder.Configuration.GetConnectionString("DefaultConnection")));
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -37,7 +38,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseAuthentication();;
+app.UseAuthentication(); ;
 
 app.UseAuthorization();
 
