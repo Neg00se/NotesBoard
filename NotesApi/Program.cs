@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using NotesApi.Data;
 using NotesApiClassLibrary.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +30,18 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddDbContext<NotesDbContext>(options => options.UseSqlServer(
 builder.Configuration.GetConnectionString("DefaultConnection")));
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+	.AddJwtBearer(options =>
+options.TokenValidationParameters = new TokenValidationParameters
+{
+	ValidateIssuer = false,
+	ValidateAudience = false,
+	ValidateIssuerSigningKey = false,
+	IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration.GetValue<string>("Secrets:SecurityKey"))),
+	ValidateLifetime = true,
+
+}
+);
 
 var app = builder.Build();
 

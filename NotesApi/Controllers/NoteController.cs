@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NotesApiClassLibrary.Data;
 using NotesApiClassLibrary.Models;
@@ -9,6 +10,7 @@ using System.Security.Claims;
 namespace NotesApi.Controllers;
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class NoteController : ControllerBase
 {
 	private readonly NotesDbContext _context;

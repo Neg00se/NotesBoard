@@ -20,5 +20,5 @@ public class Note
 
 	public DateTime? NotifyDate { get; set; }
 
-	public bool Notify { get; set; }
+	public bool Notify { get; set; } = false;
 }
