@@ -13,14 +13,12 @@ namespace NotesApi.Controllers;
 [ApiController]
 public class UserController : ControllerBase
 {
-	private readonly AppDbContext _context;
 	private readonly UserManager<IdentityUser> _userManager;
 	private readonly NotesDbContext _db;
 
-	public UserController(AppDbContext context, UserManager<IdentityUser> userManager,
+	public UserController( UserManager<IdentityUser> userManager,
 		NotesDbContext db)
 	{
-		_context = context;
 		_userManager = userManager;
 		_db = db;
 	}
@@ -56,12 +54,14 @@ public class UserController : ControllerBase
 
 				_db.Users.Add(u);
 				 await _db.SaveChangesAsync();
-				return Ok(await _db.Users.ToListAsync());
+				return Ok(await _db.Users.FindAsync(u.Id));
 			}
-
+			
 		}
 
 		return BadRequest();
+
+		
 	}
 
 }
