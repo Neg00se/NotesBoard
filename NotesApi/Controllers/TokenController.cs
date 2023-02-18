@@ -39,7 +39,7 @@ public class TokenController : ControllerBase
 		return await _userManger.CheckPasswordAsync(user, password);
 	}
 
-	private async Task<string> GenerateToken(string email)
+	private async Task<dynamic> GenerateToken(string email)
 	{
 		var user = await _userManger.FindByEmailAsync(email);
 
@@ -63,6 +63,10 @@ public class TokenController : ControllerBase
 
 		var jwt = new JwtSecurityTokenHandler().WriteToken(token);
 
-		return jwt;
+		var output = new
+		{
+			Access_Token = jwt
+		};
+		return output;
 	}
 }

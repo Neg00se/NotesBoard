@@ -20,10 +20,10 @@ public class NoteController : ControllerBase
 		_context = context;
 	}
 
-	[HttpGet]
+	[HttpGet("get-all")]
 	public async Task<List<Note>> GetAllUserNotes()
 	{
-		var user = await  _context.Users.FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+		var user = await  _context.Users.Include(u=>u.UserNotes).FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
 
 		if (user is not null)
 		{
@@ -33,7 +33,7 @@ public class NoteController : ControllerBase
 		return null;
 	}
 
-	[HttpGet("{noteId}")]
+	[HttpGet("get/{noteId}")]
 	public async Task<Note> GetNoteById(int noteId)
 	{
 		var note = await _context.Notes.FindAsync(noteId);
@@ -45,11 +45,15 @@ public class NoteController : ControllerBase
 
 	}
 
-	[HttpPost]
+	[HttpPost("create")]
 	public async Task<IActionResult> Create(Note noteToCreate)
 	{
 		try
 		{
+			var user =await _context.Users.FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
+			
+			user.UserNotes.Add(noteToCreate);
+
 			_context.Notes.Add(noteToCreate);
 			await _context.SaveChangesAsync();
 			return Ok();
@@ -62,7 +66,7 @@ public class NoteController : ControllerBase
 
 	}
 
-	[HttpPut]
+	[HttpPut("update")]
 	public async Task<IActionResult> Update(Note updateNote)
 	{
 		try
@@ -78,7 +82,7 @@ public class NoteController : ControllerBase
 		}
 	}
 
-	[HttpDelete("{noteId}")]
+	[HttpDelete("delete/{noteId}")]
 	public async Task<IActionResult> Delete(int noteId)
 	{
 

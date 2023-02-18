@@ -22,7 +22,6 @@ public class User
 
 	public string Email { get; set; }
 
-	[Required]
 	public List<Note> UserNotes { get; set; } = new List<Note>();
 
 }
