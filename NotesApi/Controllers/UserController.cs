@@ -23,7 +23,7 @@ public class UserController : ControllerBase
 		_db = db;
 	}
 
-	[HttpPost("/register")]
+	[HttpPost("register")]
 	public async Task<IActionResult> Register(UserRegistrationModel user)
 	{
 
