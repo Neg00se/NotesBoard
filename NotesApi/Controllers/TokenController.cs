@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using NotesApi.Models;
 using NotesApiClassLibrary.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -24,11 +25,11 @@ public class TokenController : ControllerBase
 
 	[HttpPost]
 	[Route("/token")]
-	public async Task<IActionResult> CreateToken(string email , string password)
+	public async Task<IActionResult> CreateToken(UserLoginModel loginUser)
 	{
-		if ( await UserValidation(email , password))
+		if ( await UserValidation(loginUser.Email , loginUser.Password))
 		{
-			return new ObjectResult(await GenerateToken(email));
+			return new ObjectResult(await GenerateToken(loginUser.Email));
 		}
 		return BadRequest();
 	}
