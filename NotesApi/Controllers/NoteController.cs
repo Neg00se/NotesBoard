@@ -20,7 +20,8 @@ public class NoteController : ControllerBase
 		_context = context;
 	}
 
-	[HttpGet("get-all")]
+	[HttpGet]
+	[Route("/get-all")]
 	public async Task<List<Note>> GetAllUserNotes()
 	{
 		var user = await  _context.Users.Include(u=>u.UserNotes).FirstOrDefaultAsync(u => u.Id == User.FindFirstValue(ClaimTypes.NameIdentifier));
