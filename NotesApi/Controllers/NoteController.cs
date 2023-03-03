@@ -46,7 +46,8 @@ public class NoteController : ControllerBase
 
 	}
 
-	[HttpPost("create")]
+	[HttpPost]
+	[Route("/create")]
 	public async Task<IActionResult> Create(Note noteToCreate)
 	{
 		try
@@ -67,7 +68,8 @@ public class NoteController : ControllerBase
 
 	}
 
-	[HttpPut("update")]
+	[HttpPut]
+	[Route("/update")]
 	public async Task<IActionResult> Update(Note updateNote)
 	{
 		try
@@ -83,7 +85,9 @@ public class NoteController : ControllerBase
 		}
 	}
 
-	[HttpDelete("delete/{noteId}")]
+	[HttpDelete]
+	[Route("/delete/{noteId}")]
+
 	public async Task<IActionResult> Delete(int noteId)
 	{
 
