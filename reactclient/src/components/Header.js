@@ -1,7 +1,7 @@
 import React from "react";
 
 const Header = () => {
-  return <div>Header</div>;
+  return <header className="header">Welcome to Note App</header>;
 };
 
 export default Header;
