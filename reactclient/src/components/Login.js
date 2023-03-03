@@ -8,7 +8,7 @@ const TOKEN_URL = "/token";
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = "/";
 
   const { setAuth } = useAuth();
   const errRef = useRef();
@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <section className="auth">
       <p
         ref={errRef}
         className={errMsg ? "errMsg" : "offscreen"}
@@ -88,7 +88,7 @@ const Login = () => {
         Need an account?
         <br />
         <span className="line">
-          <a href="#">Sign up</a>
+          <Link to="/register">Sign up</Link>
         </span>
       </p>
     </section>
