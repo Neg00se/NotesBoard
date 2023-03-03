@@ -16,7 +16,8 @@ const useAxiosPrivate = () => {
       (error) => Promise.reject(error)
     );
 
-    //TODO - Change undefined to refresh token when i implement it in API
+    //TODO:
+    // Change undefined to refresh token when i implement it in API
     const responceIntercept = axiosPrivate.interceptors.response.use(
       (response) => response,
       async (error) => {
@@ -24,7 +25,7 @@ const useAxiosPrivate = () => {
         if (error?.response?.status === 403 && !prevRequest.sent) {
           prevRequest.sent = true;
           const newAccessToken = undefined;
-          prevRequest.headers["Authorization"] = undefined;
+          prevRequest.headers["Authorization"] = newAccessToken;
           return axiosPrivate(prevRequest);
         }
         return Promise.reject(error);
@@ -32,8 +33,8 @@ const useAxiosPrivate = () => {
     );
 
     return () => {
-      axiosPrivate.interceptors.response.eject(responceIntercept);
       axiosPrivate.interceptors.request.eject(requestIntercept);
+      axiosPrivate.interceptors.response.eject(responceIntercept);
     };
   }, [auth]);
 

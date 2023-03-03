@@ -1,52 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-    color: #fff;
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  color: #fff;
 }
 
 body {
-    min-height: 100vh;
-    background-color: dodgerblue;
+  min-height: 100vh;
+  background-color: dodgerblue;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .App {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  min-height: 100vh; 
-  padding: 1rem 0.5rem;
+  min-height: 100vh;
+  
 }
 
-section {
-    width: 100%;
-    max-width: 420px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
+.auth {
+  width: 100%;
+  max-width: 350px;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  flex-grow:1;
+  padding: 1rem;
+  margin: 1rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid black;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
-    padding-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
 }
 
-a, a:visited {
-    color: #fff;
+a,
+a:visited {
+  color: #fff;
 }
 
 input[type="text"],
@@ -54,7 +67,7 @@ input[type="password"],
 input[type="email"],
 button,
 textarea {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
@@ -70,46 +83,188 @@ button {
 }
 
 .instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
 }
 
 .instructions > svg {
-    margin-right: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .offscreen {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .valid {
-    color: limegreen;
-    margin-left: 0.25rem;
+  color: limegreen;
+  margin-left: 0.25rem;
 }
 
 .invalid {
-    color: red;
-    margin-left: 0.25rem;
+  color: red;
+  margin-left: 0.25rem;
 }
 
 .errmsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .line {
-    display: inline-block;
+  display: inline-block;
 }
+
+.header,
+.footer {
+  width: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.footer {
+  padding: 0.75rem;
+}
+
+.noteGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: start;
+  margin: 0;
+}
+
+.note {
+  border: 1px solid black;
+  margin: 1rem;
+  height: 350px;
+  width: 250px;
+  border-radius: 20px;
+  background-color: papayawhip;
+  color: black;
+  transition: transform 0.2s;
+}
+
+.note:hover {
+  transform: scale(1.05);
+  box-shadow: 1px 1px 5px black;
+}
+
+.content {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.title {
+  text-transform: uppercase;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.NotePage {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  max-width: 80%;
+}
+
+.details {
+  background-color: papayawhip;
+  color: #000;
+  margin-top: 10px ;
+  margin-bottom: 10px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  flex-grow: 1;
+  padding-bottom: 30px;
+}
+
+.details h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.deleteButton {
+  margin-right: 20px;
+  width: 45%;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.editLink {
+  width: 45%;
+}
+
+.editButton {
+  width: 100%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.addNote {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px dashed black;
+  margin: 1rem;
+  height: 350px;
+  width: 250px;
+  border-radius: 20px;
+  display: grid;
+  place-content: center;
+  transition: transform 0.2s;
+}
+
+.addNote:hover {
+  transform: scale(1.05);
+  box-shadow: 1px 1px 5px black;
+}
+
+.EditPage , .NewNote {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  max-width: 80%;
+}
+
+.editForm , .addForm {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  justify-content: center;
+}
+
+.textarea {
+  resize: none;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+
