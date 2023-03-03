@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import Note from "./Note";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import DataContext from "../context/DataContext";
+import axios from "axios";
 
 const Home = () => {
-  const [notes, setNotes] = useState([]);
+  const { notes, setNotes } = useContext(DataContext);
   const axiosPrivate = useAxiosPrivate();
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     let isMounted = true;
@@ -17,8 +23,11 @@ const Home = () => {
         });
         console.log(response.data);
         isMounted && setNotes(response.data);
-      } catch (error) {
-        console.log(error);
+      } catch (err) {
+        console.error(err);
+        if (!axios.isCancel(err)) {
+          navigate("/login", { state: { from: location }, replace: true });
+        }
       }
     };
 
@@ -31,7 +40,12 @@ const Home = () => {
   }, []);
 
   return (
-    <main>
+    <main className="noteGrid">
+      <Link to="/note">
+        <div className="addNote">
+          <h2>Add Note</h2>
+        </div>
+      </Link>
       {notes.map((note) => (
         <Note key={note.id} note={note} />
       ))}
