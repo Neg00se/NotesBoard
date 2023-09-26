@@ -1,2 +1,2 @@
 # NotesBoard
-pet project
+Note taking application with custom JWT authentication
